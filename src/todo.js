@@ -1,24 +1,14 @@
 export const myTodos = [];
  
-function Todo(title, description, dueDate, priority, status) {
+function Todo(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority; 
-    this.status = status;
 };
 
-function createATodo() {
-    let todoTitle = document.getElementById("todo-title");
-    let todoDescription = document.getElementById("todo-description");
-    let todoDueDate = document.getElementById("todo-due-date");
-    let todoPriority = document.getElementById("todo-priority");
-
-    return new Todo(todoTitle.value, todoDescription.value, todoDueDate.value, todoPriority.value);
-}
-
-export function addTodoToList() {
-    myTodos.push(createATodo());
+export function addTodoToList(title, description, dueDate, priority) {
+    myTodos.push(new Todo(title, description, dueDate, priority));
 }
 
 export function deleteTodo(index) {
