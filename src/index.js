@@ -1,3 +1,4 @@
+
 import "./style.css"
 import { showNewTodoModal, closeNewTodoModal, showNewProjectModal, closeNewProjectModal, addNewTodoButton, addNewProjectButton } from "./modalUI.js";
 import { myProjects, addNewProjectToList, addTodoToProject, deleteTodo, deleteProject } from "./projects.js";

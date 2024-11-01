@@ -1,10 +1,10 @@
-<body>
+<body class="blur">
     <header>
         <h1>To-do list</h1>
     </header>
     <aside>
         <section id="add-new-project">
-            <button id="new-project-button">New Project</button>
+            <button class="new-project-button aside-button">New Project</button>
             <dialog id="project-dialog">
                 <form id="new-project-form">
                     <label for="project-title">Title</label>
@@ -17,7 +17,7 @@
         </section>
 
         <section id="add-new-todo">
-            <button class="new-todo-button">New Todo</button>
+            <button class="new-todo-button aside-button">New Todo</button>
             <dialog id="todo-dialog">
                 <form id="new-todo-form"></form>
 
@@ -57,6 +57,7 @@
 
             <div class="status-container">
                 <input class="done" name="done" type="checkbox">
+                <label>Done</label>
             </div>
 
             <button class="todo-delete-button">Delete</button>
@@ -68,7 +69,7 @@
         <div class="project-card">
             <h2 class="project-title"></h2>
             <div class="todos-list"></div>
-            <button class="project-delete-button">Delete</button>
+            <button class="project-delete-button">Delete Project</button>
         </div>
     </template>
 </body>
