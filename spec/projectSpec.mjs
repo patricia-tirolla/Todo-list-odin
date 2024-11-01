@@ -1,7 +1,7 @@
-import { myProjects, addNewProjectToList, addTodoToProject, moveTodoBetweenProjects } from "../src/projects.js";
-import { Todo, addNewTodoToList } from "../src/todo.js";
+import { myProjects, addNewProjectToList, addTodoToProject, moveTodoBetweenProjects, deleteTodo, deleteProject } from "../src/projects.js";
+import { Todo } from "../src/todo.js";
 
-
+// ----------------------- Testing the Projects functions
 describe("Project", () => {
     beforeEach(() => {
         myProjects.splice(1, myProjects.length);
@@ -27,19 +27,34 @@ describe("Project", () => {
         expect(myProjects[2].todos.length).toBe(1);
         expect(myProjects[2].todos[0]).toBeInstanceOf(Todo);
     })
+    it("should delete project from the list", () => {
+        addNewProjectToList("test project");
+        expect(myProjects.length).toBe(2);
+        addNewProjectToList("test project");
+        expect(myProjects.length).toBe(3);
+        deleteProject(2);
+        expect(myProjects.length).toBe(2);
+    })
 })
 
+// ----------------------- Testing the todos functions
 describe("List", () => {
     beforeEach( () => {
-        myProjects[0].todos.splice(0, myProjects[0].todos.length);
+        myProjects[1].todos.splice(0, myProjects[1].todos.length);
     })
     it("should add todo to list", () => {
-        addNewTodoToList("Task1", "anything", "2024-11-01", "high");
-        expect(myProjects[0].todos.length).toBe(1);
+        addTodoToProject(1, new Todo("Task1", "anything", "2024-11-02", "low"));
+        expect(myProjects[1].todos.length).toBe(1);
 
-        addNewTodoToList("Task2", "anything", "2024-11-02", "low");
-        expect(myProjects[0].todos.length).toBe(2);
-        expect(myProjects[0].todos[0].title).toBe("Task1");
-        expect(myProjects[0].todos[1].title).toBe("Task2");
+        addTodoToProject(1, new Todo("Task2", "anything", "2024-11-02", "low"));
+        expect(myProjects[1].todos.length).toBe(2);
+        expect(myProjects[1].todos[0].title).toBe("Task1");
+        expect(myProjects[1].todos[1].title).toBe("Task2");
+    })
+    it("should delete todo from the list", () => {
+        addTodoToProject(1, new Todo("Task2", "anything", "2024-11-02", "low"));
+        expect(myProjects[1].todos.length).toBe(1);
+        deleteTodo(1, 0);
+        expect(myProjects[1].todos.length).toBe(0);
     })
 })
