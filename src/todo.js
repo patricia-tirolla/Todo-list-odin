@@ -1,18 +1,18 @@
-export const myTodos = [];
- 
-function Todo(title, description, dueDate, priority) {
+import { projectDefault } from "./projects.js";
+
+export function Todo(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority; 
 };
 
-export function addTodoToList(title, description, dueDate, priority) {
-    myTodos.push(new Todo(title, description, dueDate, priority));
+export function createNewTodoObject(title, description, dueDate, priority) {
+    projectDefault.todos.push(new Todo(title, description, dueDate, priority));
 }
 
 export function deleteTodo(index) {
-    myTodos.splice(index, 1);
+    projectDefault.todos.splice(index, 1);
 }
 
 export function definePriority(todo) {

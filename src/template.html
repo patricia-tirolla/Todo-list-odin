@@ -11,12 +11,14 @@
                     <label for="project-title">Title</label>
                     <input id="project-title" type="text" name="project-title">
 
+                    <button type="button" id="cancel-project-button" formmethod="dialog">Cancel</button>
+                    <button type="submit" id="add-project-button">Add</button>
                 </form>
             </dialog>
         </section>
 
         <section id="add-new-todo">
-            <button id="add-todo-button">New Todo</button>
+            <button id="new-todo-button">New Todo</button>
             <dialog id="todo-dialog">
                 <form id="new-todo-form"></form>
 
@@ -33,39 +35,51 @@
                 <input id="todo-priority" type="text" name="priority">
 
                 <button type="button" id="cancel-button" formmethod="dialog">Cancel</button>
-                <button type="submit" id="add-button">Add</button>
+                <button type="submit" id="add-todo-button">Add</button>
             </dialog>
         </section>
     </aside>
     <main>
-        <div id="todos-container">
-            <!-- New todos go here -->
+        <div id="default-project-container">
+            <h2 id="default-project-title">Default Projects</h2>
+            <div id="default-projects-display">
+                <!-- New todos go here -->
+            </div>
         </div>
     </main>
 
     <!-- -------------- Templates -->
-    <template id="template">
-        <h3 class="title-template" data-index="index"></h3>
-        <p class="description-template"></p>
-        <p class="due-date-template"></p>
+    <template id="todo-card-template">
+        <div class="todo-card">
+            <h3 class="todo-title" data-index="index"></h3>
+            <p class="todo-description"></p>
+            <p class="todo-due-date"></p>
+            <p class="todo-priority"></p>
 
-        <div id="priority-container">
-            <p>Priority</p>
-            <label for="priority-high">High</label>
-            <input class="priority" type="checkbox" id="priority-high" name="high">
+            <!-- <div class="priority-container">
+                <h4>Priority</h4>
+                <label for="priority-high">High</label>
+                <input class="priority" type="checkbox" id="priority-high" name="high">
 
-            <label for="proirity-medium">Medium</label>
-            <input class="priority" type="checkbox" id="proirity-medium" name="medium">
+                <label for="proirity-medium">Medium</label>
+                <input class="priority" type="checkbox" id="proirity-medium" name="medium">
 
-            <label for="priority-low">Low</label>
-            <input class="priority" type="checkbox" id="priority-low" name="low">
+                <label for="priority-low">Low</label>
+                <input class="priority" type="checkbox" id="priority-low" name="low">
+            </div> -->
+
+            <div class="status-container">
+                <!-- <input class="in-progress" name="in-progress" type="checkbox"> -->
+                <input class="done" name="done" type="checkbox">
+            </div>
+
+            <button class="todo-delete-button">Delete</button>
         </div>
+    </template>
 
-        <div id="status-container">
-            <input class="in-progress" name="in-progress" type="checkbox">
-            <input class="done" name="done" type="checkbox">
+    <template id="project-card-template">
+        <div class="project-card">
+            <h2 class="project-title"></h2>
         </div>
-
-        <button class="delete-button">Delete</button>
     </template>
 </body>
