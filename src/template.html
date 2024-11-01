@@ -4,8 +4,8 @@
 
 <body>
     <aside>
-        <section id="add-new-projec">
-            <button id="add-project-button">New Project</button>
+        <section id="add-new-project">
+            <button id="new-project-button">New Project</button>
             <dialog id="project-dialog">
                 <form id="new-project-form">
                     <label for="project-title">Title</label>
@@ -18,7 +18,7 @@
         </section>
 
         <section id="add-new-todo">
-            <button id="new-todo-button">New Todo</button>
+            <button class="new-todo-button">New Todo</button>
             <dialog id="todo-dialog">
                 <form id="new-todo-form"></form>
 
@@ -40,15 +40,15 @@
         </section>
     </aside>
     <main>
-        <div id="default-project-container">
-            <h2 id="default-project-title">Default Projects</h2>
-            <div id="default-projects-display">
-                <!-- New todos go here -->
+        <div id="projects-container">
+            <select id="options"></select>
+            <div id="all-projects-container">
+                <!-- New projects go here -->
             </div>
         </div>
     </main>
 
-    <!-- -------------- Templates -->
+    <!-- -------------- Todos Templates -->
     <template id="todo-card-template">
         <div class="todo-card">
             <h3 class="todo-title" data-index="index"></h3>
@@ -56,20 +56,7 @@
             <p class="todo-due-date"></p>
             <p class="todo-priority"></p>
 
-            <!-- <div class="priority-container">
-                <h4>Priority</h4>
-                <label for="priority-high">High</label>
-                <input class="priority" type="checkbox" id="priority-high" name="high">
-
-                <label for="proirity-medium">Medium</label>
-                <input class="priority" type="checkbox" id="proirity-medium" name="medium">
-
-                <label for="priority-low">Low</label>
-                <input class="priority" type="checkbox" id="priority-low" name="low">
-            </div> -->
-
             <div class="status-container">
-                <!-- <input class="in-progress" name="in-progress" type="checkbox"> -->
                 <input class="done" name="done" type="checkbox">
             </div>
 
@@ -77,9 +64,11 @@
         </div>
     </template>
 
+    <!-- --------------- Projects templates -->
     <template id="project-card-template">
         <div class="project-card">
             <h2 class="project-title"></h2>
+            <div class="todos-list"></div>
         </div>
     </template>
 </body>

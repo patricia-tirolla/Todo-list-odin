@@ -1,11 +1,9 @@
-import { createNewTodoObject } from "./todo";
-import { addProjectToList } from "./projects";
-import { createTodo, createTodoCard } from ".";
+import { createProject, createTodo, displayProjectCard, displayTodoCardDefault } from ".";
 
 // Show Todo modal button
 export function showNewTodoModal() {
 
-    const addtodoButton = document.getElementById("new-todo-button");
+    const addtodoButton = document.querySelector(".new-todo-button");
     const modal = document.getElementById("todo-dialog");
 
     addtodoButton.addEventListener("click", () => {
@@ -31,14 +29,14 @@ export function addNewTodoButton() {
     addNewTodoButton.addEventListener("click", (e) => {
         e.preventDefault();
         createTodo();
-        createTodoCard();
+        displayProjectCard();
         modal.close();
     })
 }
 
 // Show Project modal button
 export function showNewProjectModal() {
-    const addtodoButton = document.getElementById("add-project-button");
+    const addtodoButton = document.getElementById("new-project-button");
     const modal = document.getElementById("project-dialog");
 
     addtodoButton.addEventListener("click", () => {
@@ -58,11 +56,12 @@ export function closeNewProjectModal() {
 
 // Add New Project button
 export function addNewProjectButton() {
-    const addNewProjectButton = docu
-    const modal = document.getElementById("project-dialog");ment.getElementById("add-project-button");
+    const addNewProjectButton = document.getElementById("add-project-button")
+    const modal = document.getElementById("project-dialog");
     addNewProjectButton.addEventListener("click", (e) => {
         e.preventDefault();
-        addProjectToList();
+        createProject();
+        displayProjectCard();
         modal.close();
         // reset (parent element?)
     })

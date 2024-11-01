@@ -1,58 +1,45 @@
-import { projectDefault, myProjects, addProjectToList, addTodoToProject, moveTodoBetweenProjects } from "../src/projects.js";
-import { Todo, createNewTodoObject } from "../src/todo.js";
+import { myProjects, addNewProjectToList, addTodoToProject, moveTodoBetweenProjects } from "../src/projects.js";
+import { Todo, addNewTodoToList } from "../src/todo.js";
 
 
 describe("Project", () => {
     beforeEach(() => {
-        myProjects.splice(0, myProjects.length);
+        myProjects.splice(1, myProjects.length);
     })
     it("should add project to list", () => {
-        expect(myProjects.length).toBe(0);
-        addProjectToList("projectt1");
         expect(myProjects.length).toBe(1);
+        addNewProjectToList("projectt1");
+        expect(myProjects.length).toBe(2);
     })
     it("should add todo to project list", () => {
-        addProjectToList("test project");
-        addTodoToProject(0, new Todo("Task1", "anything", "2024-11-01", "high"));
-        expect(myProjects[0].todos.length).toBe(1);
-        expect(myProjects[0].todos[0]).not.toBe(undefined);
+        addNewProjectToList("test project");
+        addTodoToProject(1, new Todo("Task1", "anything", "2024-11-01", "high"));
+        expect(myProjects[1].todos.length).toBe(1);
+        expect(myProjects[1].todos[0]).not.toBe(undefined);
     })
     it("should change todos from one project to another", () => {
-        addProjectToList("test project");
-        addProjectToList("test project2");
-        addTodoToProject(0, new Todo("Task1", "anything", "2024-11-01", "high"));
+        addNewProjectToList("test project");
+        addNewProjectToList("test project2");
+        addTodoToProject(1, new Todo("Task1", "anything", "2024-11-01", "high"));
         
-        moveTodoBetweenProjects(0, 0, 1);
-        expect(myProjects[0].todos.length).toBe(0);
-        expect(myProjects[1].todos.length).toBe(1);
-        expect(myProjects[1].todos[0]).toBeInstanceOf(Todo);
-        console.log(myProjects[1].todos);
+        moveTodoBetweenProjects(0, 1, 2);
+        expect(myProjects[1].todos.length).toBe(0);
+        expect(myProjects[2].todos.length).toBe(1);
+        expect(myProjects[2].todos[0]).toBeInstanceOf(Todo);
     })
-    it("should change todos from default to other project", () => {
-        addProjectToList("test project");
-        addProjectToList("test project2");
-        addTodoToProject(0, new Todo("Task1", "anything", "2024-11-01", "high"));
-        
-        moveTodoBetweenProjects(0, 0, 1);
-        expect(myProjects[0].todos.length).toBe(0);
-        expect(myProjects[1].todos.length).toBe(1);
-        expect(myProjects[1].todos[0]).toBeInstanceOf(Todo);
-        console.log(myProjects[1].todos);
-    })
-
 })
 
 describe("List", () => {
     beforeEach( () => {
-        projectDefault.todos.splice(0, projectDefault.todos.length);
+        myProjects[0].todos.splice(0, myProjects[0].todos.length);
     })
     it("should add todo to list", () => {
-        createNewTodoObject("Task1", "anything", "2024-11-01", "high");
-        expect(projectDefault.todos.length).toBe(1);
+        addNewTodoToList("Task1", "anything", "2024-11-01", "high");
+        expect(myProjects[0].todos.length).toBe(1);
 
-        createNewTodoObject("Task2", "anything", "2024-11-02", "low");
-        expect(projectDefault.todos.length).toBe(2);
-        expect(projectDefault.todos[0].title).toBe("Task1");
-        expect(projectDefault.todos[1].title).toBe("Task2");
+        addNewTodoToList("Task2", "anything", "2024-11-02", "low");
+        expect(myProjects[0].todos.length).toBe(2);
+        expect(myProjects[0].todos[0].title).toBe("Task1");
+        expect(myProjects[0].todos[1].title).toBe("Task2");
     })
 })
