@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:100,300,400');
-
+@import './fontawesome/css/all.css';
 
 :root {
     --shadow: 2px 2px 5px rgb(197, 194, 194);
@@ -10,10 +10,11 @@
     --buttons-background-color: rgb(223, 222, 222);
 }
 
+/* ------------------------ GLOBAL */
 body {
     font-family: 'Roboto', sans-serif;
     display: grid;
-    grid-template: 1fr 6fr / 120px 5fr;
+    grid-template: 1fr 6fr / 150px 5fr;
     background-color: var(--gray-background);
 }
 
@@ -22,14 +23,59 @@ header {
     margin: 5px 20px;
 }
 
+main {
+    display: flex;
+    grid-area: 2 / 2 / 3 / 3;
+    padding: 10px;
+    background-color: white;
+
+    #projects-container {
+        display: flex;
+        flex-direction: column;
+    
+        #options {
+            margin: 10px;
+            padding: 10px 20px;
+            width: fit-content;
+            border-radius: 3px;
+        }
+
+        #all-projects-container {
+            display: flex;
+        }
+    }
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+    }
+    h2 {
+        margin: 10px;
+        font-size: 1.2rem;
+    }
+    p {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+}
+
 aside {
     grid-area: 2 / 1 / 3 / 2;
+    margin: 10px;
+
+    #start-here {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 5px;
+        height: fit-content;
+    }
 
     #welcome-dialog[open] {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 200px;
+        width: 250px;
         border-radius: 4px;
         background-color: var(--gray-background);
         p {
@@ -84,48 +130,11 @@ aside {
         margin: 5px;
         border: 1px solid gray;
         border-radius: 6px;
+        font-size: 1em;
     }    
 }
 
-main {
-    display: flex;
-    grid-area: 2 / 2 / 3 / 3;
-    padding: 10px;
-    background-color: white;
-}
-
-h3 {
-    margin: 0;
-    font-size: 1rem;
-}
-
-h2 {
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
-p {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 400;
-}
-
-#projects-container {
-    display: flex;
-    flex-direction: column;
-
-    #options {
-        margin: 10px;
-        padding: 10px 20px;
-        width: fit-content;
-        border-radius: 3px;
-    }
-}
-
-#all-projects-container {
-    display: flex;
-}
-
+/* ------------------------ Template cards */
 .project-card {
     display: flex;
     flex-direction: column;
@@ -170,7 +179,7 @@ p {
     }
 }
 
-/* ----------------- hover actions */
+/* ------------------------ hover actions */
 
 button:hover {
     cursor: pointer;
@@ -186,6 +195,7 @@ button:hover {
 }
 
 .todo-card:hover {
+    cursor: pointer;
     box-shadow: var(--shadow-hover);
 }
 

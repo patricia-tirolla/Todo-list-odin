@@ -15,12 +15,7 @@ addNewProjectButton();
 showWelcomeModal();
 closeWelcomeModal();
 
-// ----------------------- Project UI functions
-dragAndDrop();
-getProjectsFromLocalStorage();
-displayProjectCard();
-
-// ----------------------- UI Interactions
+// ----------------------- Create Todos and Projects objects with the user inputs
 export function createTodo() {
     let todoTitle = document.getElementById("todo-title");
     let todoDescription = document.getElementById("todo-description");
@@ -48,4 +43,6 @@ if (projectsLocalStorage === null) {
     })
 }
 
-
+// ----------------------- Project UI functions
+getProjectsFromLocalStorage();
+displayProjectCard();

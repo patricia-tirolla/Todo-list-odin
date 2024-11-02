@@ -17,7 +17,7 @@ describe("Project", () => {
         expect(myProjects[1].todos.length).toBe(1);
         expect(myProjects[1].todos[0]).not.toBe(undefined);
     })
-    it("should change todos from one project to another", () => {
+    it("should move todos from one project to another", () => {
         addNewProjectToList("test project");
         addNewProjectToList("test project2");
         addTodoToProject(1, new Todo("Task1", "anything", "2024-11-01", "high"));
