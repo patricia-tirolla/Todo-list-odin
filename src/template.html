@@ -3,6 +3,19 @@
         <h1>To-do list</h1>
     </header>
     <aside>
+        <section id="welcome">
+            <button class="welcome-button aside-button">Welcome!</button>
+            <dialog id="welcome-dialog">
+                <h2 id="welcome-title">Welcome to your "To-do list"</h2>
+                <p>Click the "New Todo" button to add a new "To-do" task to your default projetcs.<br><br>
+                    You can clickk the "New Project" button to add new projects.<br><br>
+                    Select the project you wish to add a new To-do task inside it.<br><br>
+                    Enjoy it!
+                </p>
+
+                <button type="button" id="close-welcome-button" formmethod="dialog">Close</button>
+            </dialog>
+        </section>
         <section id="add-new-project">
             <button class="new-project-button aside-button">New Project</button>
             <dialog id="project-dialog">
@@ -31,7 +44,11 @@
                 <input id="todo-due-date" type="date" name="due-date">
 
                 <label for="todo-priority">Priority</label>
-                <input id="todo-priority" type="text" name="priority">
+                <select id="todo-priority" type="text" name="priority">
+                    <option value="high">High - do it asap!</option>
+                    <option value="medium">Medium - do it by due date!</option>
+                    <option value="low">Low - do it any time!</option>
+                </select>
 
                 <button type="button" id="cancel-button" formmethod="dialog">Cancel</button>
                 <button type="submit" id="add-todo-button">Add</button>
@@ -50,7 +67,7 @@
     <!-- -------------- Todos Templates -->
     <template id="todo-card-template">
         <div class="todo-card">
-            <h3 class="todo-title" data-index="index"></h3>
+            <h3 class="todo-title"></h3>
             <p class="todo-description"></p>
             <p class="todo-due-date"></p>
             <p class="todo-priority"></p>

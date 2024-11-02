@@ -1,6 +1,7 @@
-import { createProject, createTodo, displayProjectCard } from ".";
+import { createProject, createTodo} from ".";
+import { displayProjectCard } from "./projectsUI";
 
-// ----------------Todo modal and buttons
+// ---------------- Todo modal and buttons
 export function showNewTodoModal() {
 
     const addtodoButton = document.querySelector(".new-todo-button");
@@ -28,7 +29,7 @@ export function addNewTodoButton() {
     })
 }
 
-// ----------------Project modal and buttons
+// ---------------- Project modal and buttons
 export function showNewProjectModal() {
     const addtodoButton = document.querySelector(".new-project-button");
     const modal = document.getElementById("project-dialog");
@@ -50,6 +51,22 @@ export function addNewProjectButton() {
         e.preventDefault();
         createProject();
         displayProjectCard();
+        modal.close();
+    })
+}
+
+// ---------------- Welcome modal and buttons
+export function showWelcomeModal() {
+    const addtodoButton = document.querySelector(".welcome-button");
+    const modal = document.getElementById("welcome-dialog");
+    addtodoButton.addEventListener("click", () => {
+        modal.show();
+    })
+}
+export function closeWelcomeModal() {
+    const addtodoButton = document.getElementById("close-welcome-button");
+    const modal = document.getElementById("welcome-dialog");
+    addtodoButton.addEventListener("click", () => {
         modal.close();
     })
 }
