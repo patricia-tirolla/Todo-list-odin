@@ -78,6 +78,9 @@ aside {
         width: 250px;
         border-radius: 4px;
         background-color: var(--gray-background);
+        h2 {
+            text-align: center;
+        }
         p {
             background-color: white;
             padding: 10px;

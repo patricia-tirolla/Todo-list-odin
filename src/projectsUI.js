@@ -63,7 +63,7 @@ export function displayProjectCard() {
             todoClone.querySelector(".todo-priority").textContent = `Priority: ${todo.priority}`;
             todoClone.querySelector(".done").checked = todo.done;
             todoClone.querySelector(".done").onchange = (e) => {
-                doneStatus(todo, e);
+                doneStatus(myProjects[projectIndex].todos[todoIndex], e);
                 displayProjectCard();
             }
             todoClone.querySelector(".todo-delete-button").onclick = () => {
