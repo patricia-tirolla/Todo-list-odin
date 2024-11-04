@@ -1,13 +1,30 @@
-import { myProjects, deleteTodo, deleteProject, moveTodoBetweenProjects } from "./projects";
+import { myProjects, deleteTodo, deleteProject, moveTodoBetweenProjects, addTodoToProject, addNewProjectToList } from "./projects";
+import { Todo } from "./todo";
 
 export function doneStatus(todo, e) {
     todo.done = e.target.checked;
     localStorage.setItem("projects", JSON.stringify(myProjects));
 }
 
+// ----------------------- Create Todos and Projects objects with the user inputs
+export function createTodo() {
+    let todoTitle = document.getElementById("todo-title");
+    let todoDescription = document.getElementById("todo-description");
+    let todoDueDate = document.getElementById("todo-due-date");
+    let todoPriority = document.getElementById("todo-priority");
+    let options = document.getElementById("options")
+
+    addTodoToProject(options.value, new Todo(todoTitle.value, todoDescription.value, todoDueDate.value, todoPriority.value, false))
+}
+
+export function createProject() {
+    let projectTitle = document.getElementById("project-title").value;
+    addNewProjectToList(projectTitle);
+}
+
 // ----------------------- Manipulate Projects and Todo Cards
 // ----------------------- Create, delete and move them on the display
-export function displayProjectCard() {
+export function displayProjectAndTodoCards() {
 
     // ----------------------- Display the projects
     let options = document.getElementById("options");
@@ -31,7 +48,7 @@ export function displayProjectCard() {
         projectClone.querySelector(".project-delete-button").onclick = () => {
             if (projectIndex != 0) {
                 deleteProject(projectIndex);
-                displayProjectCard();
+                displayProjectAndTodoCards();
             }
         }
         // allows the todos to drag over the projects
@@ -46,7 +63,7 @@ export function displayProjectCard() {
             let todoIndex = dragged.dataset.todoIndex;
 
             moveTodoBetweenProjects(todoIndex, fromIndex, projectIndex);
-            displayProjectCard();
+            displayProjectAndTodoCards();
         })
        
 
@@ -64,11 +81,11 @@ export function displayProjectCard() {
             todoClone.querySelector(".done").checked = todo.done;
             todoClone.querySelector(".done").onchange = (e) => {
                 doneStatus(myProjects[projectIndex].todos[todoIndex], e);
-                displayProjectCard();
+                displayProjectAndTodoCards();
             }
             todoClone.querySelector(".todo-delete-button").onclick = () => {
                 deleteTodo(projectIndex, todoIndex);
-                displayProjectCard();
+                displayProjectAndTodoCards();
             }
             // target the todo card to drag
             todoClone.querySelector(".todo-card").addEventListener("dragstart", (e) => {
@@ -83,6 +100,8 @@ export function displayProjectCard() {
         projectsContainer.appendChild(projectClone);
     })
 }
+
+
 
 export function getProjectsFromLocalStorage() {
     const projects = localStorage.getItem("projects");
