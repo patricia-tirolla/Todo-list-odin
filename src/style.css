@@ -3,24 +3,51 @@
 
 :root {
     --shadow: 2px 2px 5px rgb(197, 194, 194);
+    --shadow-title: 2px 2px 10px rgb(116, 116, 116);
     --shadow-hover: 2px 2px 10px rgb(116, 116, 116);
     --gray-background: rgb(197, 194, 194);
     --light-gray-background: rgb(249, 248, 248);
-    --orange-background: rgb(240, 142, 73);
+    --medium-gray-background: #463931;
+    --dialog-background: rgb(125, 117, 111);
     --buttons-background-color: rgb(223, 222, 222);
 }
 
 /* ------------------------ GLOBAL */
 body {
     font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    background-color: black;
+}
+
+#wrap-all {
     display: grid;
     grid-template: 1fr 6fr / 150px 5fr;
     background-color: var(--gray-background);
+    width: 100%;
+    max-width: 1000px;
+    height: fit-content;
+    max-height: 100vh;
+
+    overflow: scroll;
 }
 
 header {
     grid-area: 1 / 2 / 2 / 3;
+
+    display: flex;
+    align-items: center;
+
     margin: 5px 20px;
+
+    h1 {
+        padding: 15px 30px;
+        box-shadow: var(--shadow-title);
+        border-radius: 10px;
+    }
+
 }
 
 main {
@@ -95,7 +122,7 @@ aside {
     #project-dialog {
         align-items: center;
         border-radius: 8px;
-        background-color: var(--orange-background);
+        background-color: var(--dialog-background);
         input {
             border-radius: 6px;
             height: 25px;
@@ -109,7 +136,7 @@ aside {
     #todo-dialog[open] {
         display: flex;
         flex-direction: column;
-        background-color: var(--orange-background);
+        background-color: var(--dialog-background);
         border-radius: 8px;
         gap: 5px;
         padding: 16px 30px;
